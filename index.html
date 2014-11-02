@@ -12,13 +12,16 @@
 			#firsec{background-color:#DCDCDC; width:100%; height:100px; padding-top:20px;}
 			#firsec .pagetitle{margin-left:50px; color:#2F4F4F}
 			h1{margin-top:0;}
+			h4{color:#FFDA89;}
 			h5.pagetitle{margin-top:-10px;}
 			#thirdbody{width:100%; color:#DCDCDC; background-color:#2F4F4F;}
 			#thirdbodymain{position:relative; float:left; width:78%; min-height:500px; z-index:50;}
 			#thirdbodymain h2{margin-top:1.5em;}
-			#thirdbodymain p{font-size:1em; text-indent:2em;}
-			#thirdbodymain p q{font-family:"KaiTi"; align:center;}
-			#thirdbodymain img{width:100%;}
+			#thirdbodymain p{font-size:1em; text-indent:2em; text-align:justify;}
+			#thirdbodymain code{color:#FFC0CB;}
+			#thirdbodymain a{color:#DCDCDC;text-decoration:underline;}
+			#thirdbodymain img{display:block; margin:0 auto;}
+			#thirdbodymain .toobig{width:100%;}
 			#innertext{width:80%; margin:0 auto 0 50px;}
 			#thirdbodyinfo{position:relative; float:left; width:22%; margin-top:1.5em;}
 			#navbar{margin-left:-2em; margin-right:1em;}
@@ -32,7 +35,7 @@
 			#banner{background-color:#DCDCDC; height:33px; padding-top:15px; padding-bottom:0; color:#2F4F4F;}
 			#banner h5{margin:0 auto 0 50px;}
 			#banner div{position:relative; float:left;}
-			#banner #email{margin-left:30%; margin-top:-2px;}
+			#banner #email{position:relative; float:right; margin-right:3%; margin-top:-2px;}
 			#banner #email a{color:#2F4F4F;}
 			#banner #email:hover; #banner #email:focus{background-color:#2F4F4F; color:#DCDCDC;}
 		</style>
@@ -53,9 +56,59 @@
 				
 					<section>
 					
+						<article id="article2">
+							<h2>随波逐流（2）——书读百遍，举一反三</h2>
+							<img src="cover.jpg" alt="bookcover of eloquentjavascript" />
+							<p>前端的浪潮实在太快，跳进去只能随波逐流。</p>
+							<p>这是从过去的失败日子里收获的教训，只有实践了才会知道这个世界是怎么样的，宅在家中想，觉得自己什么都行，真的没什么价值，不仅没有普世价值，连现在的自己回望从前的自己时，都有一种恍然的感觉。</p>
+							<p>生活何尝不是一种修行，在没有能力的时候，先随波逐流没什么不好。当然，也许不会有现在的心境，但如果另一条时间线上的我在毕业时就选择了辛勤工作，心境就比现在的要差吗？</p>
+							<p>不好说</p>
+							<p>这周包括未来几周都要暂时搁置 css 和 html，开始系统的学习 javascript，在横拉窗口的时候发现博客的「Email 块」竟然没有 <code>float:right</code> ，我也不知道当时是怎么想的。</p>
+							<hr />
+							<h4>Parameter 的 variable 本质</h4>
+							<p><a href="http://eloquentjavascript.net/">Eloquent Javascript</a> 是非常不错的 js 教程，简明易懂，比如在说「数据类型」的时候，就讲到数据类型的来源是什么。而在讲解 function 的 parameter 的时候，也是深入浅出的解释道——parameter 其实就是 function 中 variables，并且这个 variable 的值是由 caller 赋予的。当时看第一边的时候真的没懂，正如我在知乎的某个答案说学习 <code>null undefined false NaN</code> 之间的关系的时候，陆续看了三遍，function 显然是 js 的重点，看不懂就再看，三遍不行就四遍、五遍，终于看懂了。parameter 不仅仅是一个 function 内的 variable,更是一个由 caller 控制的 variable，所以 function 内一定不能将 parameter 绑定在一个自己不想控制的 variable 上。</p>
+							<h4>null 与 0</h4>
+							<p>null 只等于 undefined 或者 null 本身，而 <code>null*8 = 0</code> 是因为类型强制（type coercion），为了计算，js 必须将 null 转换成数值，null 转换成数值就是 0。</p>
+							<h4>for 循环</h4>
+							<p><code>for(var x= 1; x < 10; x++)</code></p>
+							<p>必须有三项 parameter，除了最后一项 parameter 之外，其他的 parameter 即使不想设置也必须用 <code>""</code> 即空值来表示，不然 js 的自动不全会导致 parameter 的对应关系错乱。</p>
+							<h4>function 的表达混乱方式</h4>
+							<p>至今仍未理解为什么同样一个表达式，<code>var x= function(y)</code> 和 <code>function x(y)</code> 是同时允许的。这难道不混乱吗？也许 function x(y) 从数值传递的角度看起来更加容易理解，但前者却与数学的 y = f(x) 是一样的格式。</p>
+							<h4>举一反三</h4>
+							<img src="homework1.jpg" alt="homework1: 7 lines of # from 1 to 7">
+							<p>很简单的作业，如果这是用 Python 写，估计早就搞定了。现实寻找 js 的 IDLE 费了好久时间，连 Visual Studio 都安装了，还是没搞定，结果最后是在教程内置的 code 编辑器里面完成的。骑驴找驴啊。</p>
+							<img src="homeworkcode1.jpg" alt="code of homework 1">
+							<p>基本的逻辑还是有，浪费在 syntax 上大概有10分钟，先尝试了用 function 来完成，后来突然发现这根本就不用 function 嘛。</p>
+							<p>突发奇想，如果需要的不是 7 行，而是 n 行怎么办？</p>
+							<p>当然用 function 啦，这就是 function 存在的目的啊。于是有了下面的代码：</p>
+							<img src="homeworkcode1-a.jpg" alt="wrong code of homework warpped in function">
+							<p>但是问题来了，每次运行之后，都会多出最末一行字符 <code>undefined</code>，爪子会这样嘞？</p>
+							<p>原来在 homeworkdamnhard(7) 调用函数之后，最末行的 console.log 又返回了 function 的默认值，当然就是 undefiend。</p>
+							<p>在 function 中使用 return 当然会返回 variable 的值，改变返回 undefiend 的结果。但是这个 statement 中，需要循环输出，可是 return 会终止 function 的计算过程，所以不能用 return。</p>
+							<p>找了很久，到底改返回什么，经过在知乎请教，得知还有另一种方法，就是去掉最外层的 console.log。难道这样不会变成什么结果都不显示吗？</p>
+							<p>答案是不会，因为在 function 内部还有 console.log，在 statement 每次循环的时候都会返回对应的值。</p>
+							<p>所以正确的代码应该是：</p>
+							<img src="homeworkcode1-b.jpg" alt="right code of homework warpped in function">
+							<p>举一反三，对一个问题给出了两个代码，同时还深刻的理解了 return 和 console.log。开心~~</p>
+							<p>第二个练习本想用 switch 来写，结果写出来才发现很多问题，比如 switch 后面的 expression 要怎么写？还比如 case 下的多条件用什么连接。然后矛盾的地方就来了：</p>
+							<ol>
+								<li>为什么 var x=***, y=***,z=*** 的多项要用 <code>,</code> 来分隔，而在 if 或 case 等条件语句中就要用 <code>&&</code>？这难道不矛盾吗？</li>
+								<li>为什么 if 后面的条件判断要用 <code>()</code> 来界定，而 case 后面则不能用 <code>()</code>？这也太矛盾了吧？</li>
+							</ol>
+							<img src="homeworkcode2-a.jpg" alt="code of the second homeword method a">
+							<p>总之，最后好歹是用 if 的模式完成了，也就是上图。同样是做了一个 function，搞成了万用模式，我就好像有强迫症是的。但是 switch 的模式在我心中久久不去，下周继续。</p>
+							<h4>数学，还有 Python</h4>
+							<p>数学和后端对前端无疑裨益良多，要多多学习。天色已晚，明日上班，睡前学学 MIT 的「单变量微积分」就当看美剧了吧。虽然名字听起来有点蛋疼，不过老师还是萌萌的。Python 下周也争取多熬出一节课来。时间时间实在是不够，浪费了十年青春，忙成这个德行也是活该。豆瓣阅读邀请参加的大赛稿子还没写完，本来打算这周末写，结果时间都花在 js 上了。看来对 GTD 也不能再反感了，找个时间取其精华。</p>
+							<p>加油。</p>
+						</article>
+
+						<hr />
+						<hr />
+						<hr />
+
 						<article id="article1">
-							<h2>2014-10-26</h2>
-							<img src="emacs-vs-vim.jpg" alt="流星" />
+							<h2>随波逐流（1）——编辑器</h2>
+							<img src="emacs-vs-vim.jpg" alt="编辑器对比图" />
 							<p>昨天下午纠结于编辑器的选择，心中的抑郁之情就如同今天万里晴空中的绵羊状白云般散乱不堪。对更佳工具的渴望在不知不觉中变得朦胧了，模糊了，越来越远，远的自己已经看不清为什么而来。</p>
 							<p>我曾经有很多偏执的想法，部分因当前互联网技术的发展解决了，部分没有。那时候的心情必然是如跳不出去的井底之蛙，仿佛受伤的雏鹰，心中清楚自己能飞的更高，却被现实束缚了翅膀，只能忍着。比如云服务。这世界本应该只有一种优美的云服务，而不是遍地开花。但这个想法有致命的缺点——垄断必然造成产品不思进取，可以参考IE6。</p>
 							<p>产品多可以看作一种好事，但起码作为个人来讲是要追求统一的。很久之前，别人说我是强迫症，完美主义者。前者我不同意，至于完美主义，谁不喜欢呢？几年前我甚至开始纠结为什么很多程序有相同重复的功能，甚至魔兽世界的插件也有重复的功能，这太不完美了。要么你给我一种单一的功能；要么你给我完善的功能，到处都是半吊子算什么？</p>
@@ -63,7 +116,7 @@
 							<p>不能！</p>
 							<p>我知道肯定有人这么说，他们有各种各样的理由。事实是，几年前我对完美的偏执，比如要求多平台的同步，在当时也只是一个『偏执』而已，如今人类的技术实现了，不知道当时以各种理由反驳我的诸位作何感想？</p>
 							<p>Windows 也有它致命的缺点，如今我在PC上运行着 Windows10 Technical Preview，各种新的 Feature 真的让我感觉到微软的用心，但有些功能让我感觉很不爽，比如：</p>
-							<img src="GDI vs Direct.jpg" alt="GDI vs Direct" />
+							<img src="GDI vs Direct.jpg" alt="GDI vs Direct" class="toobig"/>
 							<ul>
 								<li>万年不变的字体渲染。我已经不想再去争论 GDI，Cleartype 或者 DirectX，这些是我一个用户应该感兴趣的东西吗？我需要一个更好的渲染，单纯的是因为 Windows 下的字体渲染实在太丑，于是我才安装了 Mactype。在 GDI  的渲染下，雅黑大概是最好看的字体了，甚至超越了冬青黑。有这么好的字体，微软怎么就不能好好渲染呢？有人说英文下效果还是不错的，我只能说：Windows 下默认英文的渲染也是发飘的啊亲。</li>
 								<li>不断变化的搜索。在 Window7 中，搜索是基于内容的，这代表着可以搜索到包含某段字符的文档，强大到爆表！但是 Windows10 又改回了标题搜索。我觉得这两种搜索应该合并，而不是发展什么 Bing……Bing 的『本机搜索』实在太难用了，怎么就不能好好迭代呢？但微软的心似乎太急切了，就像一个刚刚成年的少女，还未成熟，就急于嫁出去。</li>
@@ -108,11 +161,7 @@
 							<hr />
 							<p>还是不喜欢直接使用 JellyII，同样，并不是因为它不好，而是因为我目前要学习造轮子，而不是直接使用轮子。By the way，感谢 Vzch 帮我重新认识了微软和 Coding。</p>
 						</article>
-						
-						<article id="article1">
-							
-						</article>
-						
+
 					</section>
 					
 				</div>
